@@ -1,0 +1,23 @@
+{
+  "name": "graphql-sequelize-services",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "db:migrate": "sequelize db:migrate",
+    "db:migrate:undo": "sequelize db:migrate;undo",
+    "watch": "ts-node-dev --respawn index.dev.ts"
+  },
+  "devDependencies": {
+    "module-alias": "^2.2.2",
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^4.1.5"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.5.0",
+    "sequelize-cli": "^6.2.0",
+    "sequelize-typescript": "^2.1.0"
+  }
+}
