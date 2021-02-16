@@ -1,11 +1,19 @@
 module.exports.up = (queryInterface, DataTypes) => {
   return queryInterface.createTable(
-    "chefs",
+    "restaurants",
     {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
+        type: DataTypes.INTEGER.UNSIGNED
+      },
+      chefId: {
+        allowNull: false,
+        references: {
+          key: "id",
+          model: "chefs"
+        },
         type: DataTypes.INTEGER.UNSIGNED
       },
       name: {
@@ -31,4 +39,4 @@ module.exports.up = (queryInterface, DataTypes) => {
   );
 };
 
-module.exports.down = queryInterface => queryInterface.dropTable("chefs");
+module.exports.down = queryInterface => queryInterface.dropTable("restaurants");
