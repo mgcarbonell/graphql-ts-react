@@ -1,23 +1,22 @@
-import React from 'react';
-import { ReactDOM, render } from 'react-dom';
-import { createGlobalStyle } from 'styled-components';
+import * as React from "react";
+import { ApolloProvider } from "react-apollo";
+import { render } from "react-dom";
+import { createGlobalStyle } from "styled-components";
 
-
-import Root from './components/Root';
+import graphqlClient from "./api/graphql";
+import Root from "./components/Root";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto:300,500&display=swap');
-  
   body {
     font-family: Roboto, sans-serif;
   }
 `;
 
-
 render(
-  <div>
+  <ApolloProvider client={graphqlClient}>
     <GlobalStyle />
     <Root />
-  </div>,
+  </ApolloProvider>,
   document.getElementById("app")
 );
