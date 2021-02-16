@@ -1,4 +1,12 @@
-import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
+import { 
+  BelongsTo, 
+  Column, 
+  DataType, 
+  ForeignKey, 
+  HasMany, 
+  Model, 
+  Table 
+} from 'sequelize-typescript';
 
 @Table({
   defaultScope: {
@@ -34,3 +42,31 @@ export class Chef extends Model<Chef> {
   paranoid: true,
   tableName: "restaurants"
 })
+
+export class Restaurant extends Model<Restaurant> {
+  @Column({
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+    type: DataType.INTEGER.UNSIGNED
+  })
+  id!: string;
+
+  @Column({
+    allowNull: false,
+    type: DataType.INTEGER.UNSIGNED
+  })
+  @ForeignKey(() => Chef)
+  chefId!: string;
+
+  @Column({
+    allowNull: false,
+    type: DataType.STRING
+  })
+  name!: string;
+
+  @BelongsTo(() => Chef)
+  chef!: Chef;
+}
+
+export default [Chef, Restaurant];
